@@ -1,8 +1,11 @@
 import "./App.css";
-import FacebookLogin from "react-facebook-login";
+import FbLogin from "react-facebook-login";
+import FacebookLogin from "../src/axios/facebookLogin";
 
 function App() {
-  const responseFacebook = (response) => {};
+  const responseFacebook = (response) => {
+    FacebookLogin(response.accessToken);
+  };
   const componentClicked = (response) => {};
   return (
     <div
@@ -13,7 +16,7 @@ function App() {
         minHeight: "600px",
       }}
     >
-      <FacebookLogin
+      <FbLogin
         appId="506446373702522"
         autoLoad={true}
         fields="name,email,picture"
