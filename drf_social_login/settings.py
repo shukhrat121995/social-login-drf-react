@@ -145,9 +145,9 @@ REST_FRAMEWORK = {
 AUTHENTICATION_BACKENDS = (
     # Others auth providers (e.g. Google, OpenId, etc)
 
-    # Facebook OAuth2
-    'social_core.backends.facebook.FacebookAppOAuth2',
-    'social_core.backends.facebook.FacebookOAuth2',
+    # LinkedIn OAuth2
+    'social_core.backends.linkedin.LinkedinMobileOAuth2',
+    'social_core.backends.linkedin.LinkedinOAuth2',
 
     # drf_social_oauth2
     'drf_social_oauth2.backends.DjangoOAuth2',
@@ -156,6 +156,15 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-SOCIAL_AUTH_FACEBOOK_KEY = ('506446373702522')
-SOCIAL_AUTH_FACEBOOK_SECRET = ('4fac34bb415656f8f21a550a2412ba02')
+SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = '77dg2hnslq2kfz'
+SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = 'n5WYbVHH1mcArj9O'
+SOCIAL_AUTH_LINKEDIN_OAUTH2_SCOPE = ['r_basicprofile', 'r_emailaddress']
+SOCIAL_AUTH_LINKEDIN_OAUTH2_FIELD_SELECTORS = ['email-address', 'formatted-name', 'public-profile-url', 'picture-url']
+SOCIAL_AUTH_LINKEDIN_OAUTH2_EXTRA_DATA = [
+    ('id', 'id'),
+    ('formattedName', 'name'),
+    ('emailAddress', 'email_address'),
+    ('pictureUrl', 'picture_url'),
+    ('publicProfileUrl', 'profile_url'),
+]
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'http://localhost:3000/'

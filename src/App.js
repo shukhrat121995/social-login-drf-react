@@ -1,29 +1,17 @@
-import "./App.css";
-import FbLogin from "react-facebook-login";
-import FacebookLogin from "../src/axios/facebookLogin";
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+
+import { LinkedInPopUp } from "react-linkedin-login-oauth2";
+import LinkedInPage from "./LinkedInPage";
 
 function App() {
-  const responseFacebook = (response) => {
-    FacebookLogin(response.accessToken);
-  };
-  const componentClicked = (response) => {};
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        minHeight: "600px",
-      }}
-    >
-      <FbLogin
-        appId="506446373702522"
-        autoLoad={true}
-        fields="name,email,picture"
-        onClick={componentClicked}
-        callback={responseFacebook}
-      />
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/linkedin" component={LinkedInPopUp} />
+        <Route path="/" component={LinkedInPage} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
