@@ -28,12 +28,12 @@ class LinkedInPage extends Component {
       <div>
         <LinkedIn
           clientId="77dg2hnslq2kfz"
-          redirectUri="http://starwarsarts.com/"
+          redirectUri="http://localhost:3000/linkedin"
           scope="r_emailaddress"
-          state="34232423"
           onFailure={this.handleFailure}
           onSuccess={this.handleSuccess}
           supportIE
+          redirectPath="/linkedin"
         >
           <img
             src={linkedin}
