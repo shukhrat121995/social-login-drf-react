@@ -146,7 +146,6 @@ AUTHENTICATION_BACKENDS = (
     # Others auth providers (e.g. Google, OpenId, etc)
 
     # LinkedIn OAuth2
-    'social_core.backends.linkedin.LinkedinMobileOAuth2',
     'social_core.backends.linkedin.LinkedinOAuth2',
 
     # drf_social_oauth2
@@ -158,13 +157,12 @@ AUTHENTICATION_BACKENDS = (
 
 SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = '77dg2hnslq2kfz'
 SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = 'n5WYbVHH1mcArj9O'
-SOCIAL_AUTH_LINKEDIN_OAUTH2_SCOPE = ['r_basicprofile', 'r_emailaddress']
-SOCIAL_AUTH_LINKEDIN_OAUTH2_FIELD_SELECTORS = ['email-address', 'formatted-name', 'public-profile-url', 'picture-url']
-SOCIAL_AUTH_LINKEDIN_OAUTH2_EXTRA_DATA = [
-    ('id', 'id'),
-    ('formattedName', 'name'),
-    ('emailAddress', 'email_address'),
-    ('pictureUrl', 'picture_url'),
-    ('publicProfileUrl', 'profile_url'),
-]
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'http://localhost:3000/'
+# Add email to requested authorizations.
+SOCIAL_AUTH_LINKEDIN_OAUTH2_SCOPE = ['r_liteprofile', 'r_emailaddress']
+# Add the fields so they will be requested from linkedin.
+SOCIAL_AUTH_LINKEDIN_OAUTH2_FIELD_SELECTORS = ['emailAddress']
+# Arrange to add the fields to UserSocialAuth.extra_data
+SOCIAL_AUTH_LINKEDIN_OAUTH2_EXTRA_DATA = [('id', 'id'),
+                                          ('firstName', 'first_name'),
+                                          ('lastName', 'last_name'),
+                                          ('emailAddress', 'email_address')]

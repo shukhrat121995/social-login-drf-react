@@ -29,7 +29,7 @@ class LinkedInPage extends Component {
         <LinkedIn
           clientId="77dg2hnslq2kfz"
           redirectUri="http://localhost:3000/linkedin"
-          scope="r_emailaddress"
+          scope="r_emailaddress r_liteprofile"
           onFailure={this.handleFailure}
           onSuccess={this.handleSuccess}
           supportIE
